@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register | Shoe Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('register.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      margin-top: 100px;
+    }
+    form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      width: 300px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 95%;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Register</h2>
+
+  <form id="registerForm" onsubmit="registerUser(event)">
+    <input type="text" id="name" placeholder="Full Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <input type="password" id="confirm" placeholder="Confirm Password" required><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <p>Already have an account? <a href="login.html">Login</a></p>
+  
+  <script>
+     function registerUser(event) {
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let confirm = document.getElementById("confirm").value;
+
+        if (password !== confirm) {
+           alert("Passwords do not match!");
+           return;
+        }
+
+        if (password.length < 6) {
+          alert("Password must be at least 6 characters long.");
+          return;
+        }
+        
+        // Save data
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
+        localStorage.setItem("name", name);
+
+        alert("✅ Registered successfully! You can now login.");
+        document.getElementById("registerForm").reset();
+     }
+  </script>
+
+<br>
+<button onclick="window.location.href='index.html'" style="margin-top:90px; padding:10px 20px; background-color:black; color:white; border:none; border-radius:5px; cursor:pointer;"> ⬅ Back to Home </button>
+
+</body>
+</html>

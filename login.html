@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('register.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      margin-top: 100px;
+    }
+    form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      width: 300px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 95%;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Login</h2>
+
+<form onsubmit="loginUser(event)">
+  <input type="email" id="email" placeholder="Email" required><br><br>
+  <input type="password" id="password" placeholder="Password" required><br><br>
+  <input type="submit" value="Login">
+</form>
+
+<p>Don't have an account? <a href="form.html">Register</a></p>
+
+<script>
+function loginUser(event) {
+  event.preventDefault();
+
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  let savedEmail = localStorage.getItem("email");
+  let savedPassword = localStorage.getItem("password");
+  let name = localStorage.getItem("name");
+
+  if (email === savedEmail && password === savedPassword)
+  {
+    alert("✅ Login successful! Welcome back, " + name + "!");
+    window.location.href = "index.html";
+  } 
+  else {
+    alert("❌ Incorrect email or password!");
+  }
+}
+</script>
+
+<br>
+<button onclick="window.location.href='index.html'" style="margin-top:140px; padding:10px 20px; background-color:black; color:white; border:none; border-radius:5px; cursor:pointer;"> ⬅ Back to Home </button>
+
+</body>
+</html>
